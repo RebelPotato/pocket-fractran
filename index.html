@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fractran Interpreter</title>
+    <style>
+      body {
+        background-color: #001100;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        padding: 20px;
+      }
+
+      .container {
+        border: 2px inset #00aa00;
+        padding: 15px;
+        background-color: #000000;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .panel {
+        margin-bottom: 15px;
+      }
+
+      textarea,
+      input {
+        background-color: #002200;
+        border: 1px solid #00aa00;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        padding: 5px;
+      }
+
+      button {
+        background-color: #002200;
+        border: 1px solid #00aa00;
+        color: #00ff00;
+        padding: 5px 15px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #004400;
+      }
+
+      #log {
+        height: 300px;
+        overflow-y: auto;
+        border: 1px solid #00aa00;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #001100;
+      }
+
+      .log-entry {
+        margin: 3px 0;
+        padding: 2px;
+        border-bottom: 1px dotted #003300;
+      }
+
+      .crt {
+        text-shadow: 0 0 5px #00ff00;
+      }
+
+      a {
+        color: #00ff00;
+        text-decoration: underline;
+      }
+      a:hover {
+        color: #00aa00;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container crt">
+      <h1>
+        FRACTRAN<a href="https://wiki.xxiivv.com/site/fractran.html">(?)</a>
+        INTERPRETER v0.1
+      </h1>
+
+      <div class="panel">
+        <h3>PROGRAM CODE:</h3>
+        <textarea id="code" rows="10" cols="60"></textarea>
+      </div>
+
+      <div class="panel">
+        <h3>INITIAL STATE (integer):</h3>
+        <input type="text" id="initial" />
+      </div>
+
+      <div class="panel">
+        <button id="run">START</button>
+        <button id="step">STEP</button>
+        <button id="reset">RESET</button>
+      </div>
+
+      <h3>EXECUTION LOG:</h3>
+      <div id="log"></div>
+    </div>
+    <script src="main.js"></script>
+    <script src="ui.js"></script>
+  </body>
+</html>
