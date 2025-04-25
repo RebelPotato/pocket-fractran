@@ -21,8 +21,8 @@ function updateState(state) {
   currentState = state;
   try {
     updateLog("-------------------");
-    updateLog(`Applied: ${state.frac.toString()}`);
-    updateLog(`State: ${vm.toWords(state.acc)}`);
+    updateLog(`Applied: ${state.frac.toString()} (${toBig(state.frac.rhs)} / ${toBig(state.frac.lhs)})`);
+    updateLog(`State: ${vm.toWords(state.acc)} (${toBig(state.acc)})`);
   } catch (e) {
     updateLog(`Error: ${e.message}`);
     stopExecution();
@@ -38,7 +38,8 @@ function stopExecution() {
 function initRunner() {
   const initial = elId("initial").value;
   currentState = { acc: vm.toList(initial) };
-  updateLog(`Initial state: ${vm.toWords(currentState.acc)}`);
+  updateLog(`Mappings: ${vm.words.map((w, i) => `${w} -> ${primes[i]}`).join(", ")}`);
+  updateLog(`Initial state: ${vm.toWords(currentState.acc)} (${toBig(currentState.acc)})`);
   runner = vm.run(currentState.acc);
 }
 
@@ -74,7 +75,7 @@ elId("run").addEventListener("click", () => {
           stopExecution();
           if (done) updateLog("Execution completed");
         } else {
-          setTimeout(runStep, 100);
+          setTimeout(runStep, 500);
         }
       }
 

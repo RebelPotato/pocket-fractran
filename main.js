@@ -83,11 +83,11 @@ function compile(code) {
 
 const primes = [BigInt(2)];
 for (let i = BigInt(3); primes.length < 1000; i += BigInt(2))
-  if (primes.every((p) => i % p !== 0)) primes.push(BigInt(i));
+  if (primes.every((p) => i % p !== 0n)) primes.push(BigInt(i));
 const bigPow = (x, n) =>
-  n <= 0 ? BigInt(1) : n % 2 ? x * bigPow(x, n - 1) : bigPow(x * x, n / 2);
+  n <= 0 ? BigInt(1) : n % 2n ? x * bigPow(x, n - 1n) : bigPow(x * x, n / 2n);
 const toBig = (xs) =>
-  xs.map((x, i) => bigPow(primes[i], BigInt(x))).reduce((a, b) => a * b);
+  xs.map((x, i) => bigPow(primes[i], BigInt(x))).reduce((a, b) => a * b, 1n);
 function fromBig(x) {
   const xs = Array(primes.length).fill(0);
   for (let i = 0; x > 1 && i < primes.length; i++) {
